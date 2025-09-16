@@ -1,0 +1,6 @@
+.venv
+.vscode
+__pycache__
+database.sqlite
+logs/*
+.env

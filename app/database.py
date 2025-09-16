@@ -112,3 +112,4 @@ class User(Base):
     pk: Mapped[int] = mapped_column(primary_key=True)
     tg_id: Mapped[str] = mapped_column(String(100), unique=True)
     username: Mapped[str] = mapped_column(String(100), nullable=True)
+    language: Mapped[str] = mapped_column(String(10), default="en", nullable=False)

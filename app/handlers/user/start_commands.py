@@ -27,8 +27,8 @@ async def start_cmd(message: types.Message, session: AsyncSession):
                 user = await orm_read(session, User, as_iterable=False, tg_id=tg_id)
             else:
                 raise Exception 
-
-        await message.answer(f"Hello, user! Your ID is {user.tg_id}")
+        
+        await message.answer(f"Hello, user! Your ID is {user.tg_id}\n Your language is {user.language}")
     except Exception as e:
         logger.error(f"Short error message: {e}")
         logger.error(traceback.format_exc())

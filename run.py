@@ -7,7 +7,7 @@ from aiogram.types import BotCommandScopeAllPrivateChats
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums import ParseMode
 
-from app.middlewares import DataBaseSession
+from app.middlewares import DataBaseSession, LanguageMiddleware
 from app.database import create_db, drop_db, session_maker
 from app.handlers.user import user_router
 from app.handlers.admin import admin_router
@@ -50,6 +50,7 @@ async def main():
     dp.shutdown.register(on_shutdown)
 
     dp.update.middleware(DataBaseSession(session_pool=session_maker))
+    dp.update.middleware(LanguageMiddleware())
 
     await bot.delete_webhook(drop_pending_updates=True)
     # await bot.set_my_commands(
